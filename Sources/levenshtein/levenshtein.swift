@@ -15,10 +15,10 @@ import Foundation
 /// - Returns: The Levenshtein distance between the given strings `s1` and `s2`.
 func levenshteinDistance(s1: String, s2: String) -> Int {
     if s1.isEmpty {
-        return s1.count
+        return s2.count
     }
     if s2.isEmpty {
-        return s2.count
+        return s1.count
     }
 
     // drop first letter of each string
