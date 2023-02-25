@@ -1,0 +1,12 @@
+image: swift:latest
+
+stages:
+  - check
+
+check:
+  stage: check
+  script:
+    - swift --version
+    - swift test
+    - swift run levenshtein
+    - swift build
