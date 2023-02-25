@@ -1,5 +1,3 @@
-import Foundation
-
 func levenshteinDistance(s1: String, s2: String) -> Int {
     
     if s1.isEmpty{
@@ -25,15 +23,20 @@ func levenshteinDistance(s1: String, s2: String) -> Int {
     return 1 + min(min(c1, c2), c3)
 }
 
-let pairs: [[String]] = [
-    ["Kaserne", "Kaverne"],
-    ["Himmel", "Hölle"],
-    ["Grün", "Blau"],
-    ["Hut", "Donaudampfschiffahrtskapitänsmütze"],
-    ["Zitrone", "Dampfschiff"]
-]
+@main
+public struct levenshtein {
+    public static func main() {
+        let pairs: [[String]] = [
+            ["Kaserne", "Kaverne"],
+            ["Himmel", "Hölle"],
+            ["Grün", "Blau"],
+            ["Hut", "Donaudampfschiffahrtskapitänsmütze"],
+            ["Zitrone", "Dampfschiff"]
+        ]
 
-for pair in pairs{
-    print("The Levenshtein distance between", pair[0], "and", pair[1], "is",
-          levenshteinDistance(s1: pair[0], s2: pair[1]), ".")
+        for pair in pairs{
+            print("The Levenshtein distance between", pair[0], "and", pair[1], "is",
+                levenshteinDistance(s1: pair[0], s2: pair[1]), ".")
+        }
+    }
 }

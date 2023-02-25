@@ -1,0 +1,22 @@
+{
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug levenshtein",
+            "program": "${workspaceFolder:levenshtein}/.build/debug/levenshtein",
+            "args": [],
+            "cwd": "${workspaceFolder:levenshtein}",
+            "preLaunchTask": "swift: Build Debug levenshtein"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Release levenshtein",
+            "program": "${workspaceFolder:levenshtein}/.build/release/levenshtein",
+            "args": [],
+            "cwd": "${workspaceFolder:levenshtein}",
+            "preLaunchTask": "swift: Build Release levenshtein"
+        }
+    ]
+}
