@@ -1,3 +1,16 @@
+/// Computes the Levenshtein distance between the given strings `s1` and `s2`. The Levenshtein
+/// distance between two words is the minimum number of single-character edits (insertions, 
+/// deletions or substitutions) required to change one word into the other.
+///
+/// ```
+/// let d: Int = levenshteinDistance(s1: "major", s2: "mayor")  // d = 1
+/// ```
+///
+/// - Parameters:
+///     - s1: The first of the given strings.
+///     - s2: The second of the given strings.
+///
+/// - Returns: The Levenshtein distance between the given strings `s1` and `s2`.
 func levenshteinDistance(s1: String, s2: String) -> Int {
     
     if s1.isEmpty{
