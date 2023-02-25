@@ -1,3 +1,5 @@
+import Foundation
+
 /// Computes the Levenshtein distance between the given strings `s1` and `s2`. The Levenshtein
 /// distance between two words is the minimum number of single-character edits (insertions, 
 /// deletions or substitutions) required to change one word into the other.
@@ -36,20 +38,46 @@ func levenshteinDistance(s1: String, s2: String) -> Int {
     return 1 + min(min(c1, c2), c3)
 }
 
+/// Prefixes the specified string `s` with enough spaces so that the specified `length` is reached.
+/// If `s` is not shorter than `length` characters then `s` is left unchanged.
+///
+/// ```
+/// let s: String = leftPad(s: "Hello", length: 10)  // results in the string "     Hello"
+/// ```
+///
+/// - Parameters:
+///     - s: The string to be prefixed.
+///     - length: The final length of the result after padding.
+///
+/// - Returns: The string prefixed with spaces.
+func leftPad(s: String, length: Int) -> String {
+    var result = s
+    while (result.count < length) {
+        result = " " + result
+    }
+    return result
+}
+
 @main
 public struct levenshtein {
     public static func main() {
         let pairs: [[String]] = [
-            ["Kaserne", "Kaverne"],
-            ["Himmel", "Hölle"],
-            ["Grün", "Blau"],
-            ["Hut", "Donaudampfschiffahrtskapitänsmütze"],
-            ["Zitrone", "Dampfschiff"]
+            ["Mayor", "Major"],
+            ["Heaven", "Hell"],
+            ["Green", "Blue"],
+            ["Hat", "Fedora"],
+            ["Lemon", "Barque"]
         ]
-
+        print()
+        print("  1st Word   2nd Word   Distance")
+        print("--------------------------------")
         for pair in pairs{
-            print("The Levenshtein distance between", pair[0], "and", pair[1], "is",
-                levenshteinDistance(s1: pair[0], s2: pair[1]), ".")
+            let d = levenshteinDistance(s1: pair[0], s2: pair[1])
+            let first = leftPad(s: pair[0], length: 10)
+            let second = leftPad(s: pair[1], length: 10)
+            let output = String(format: "%@ %@ %10d", first, second, d)
+            print(output)
         }
+        print()
     }
 }
