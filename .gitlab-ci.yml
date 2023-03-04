@@ -1,9 +1,6 @@
 variables:
-  # Setting this variable will affect all Security templates
-  # (SAST, Dependency Scanning, ...)
   SECURE_ANALYZERS_PREFIX: "$CI_TEMPLATE_REGISTRY_HOST/security-products"
   SAST_IMAGE_SUFFIX: ""
-
   SAST_EXCLUDED_ANALYZERS: ""
   SAST_EXCLUDED_PATHS: "spec, test, tests, tmp"
   SCAN_KUBERNETES_MANIFESTS: "false"
@@ -25,27 +22,13 @@ sast:
   artifacts:
     reports:
       sast: gl-sast-report.json
-  rules:
-    - when: never
-  variables:
-    SEARCH_MAX_DEPTH: 4
-  script:
-    - echo "$CI_JOB_NAME is used for configuration only, and its script should not be executed"
-    - exit 1
-
-.sast-analyzer:
-  extends: sast
   allow_failure: true
-  # `rules` must be overridden explicitly by each child job
-  # see https://gitlab.com/gitlab-org/gitlab/-/issues/218444
-  script:
-    - /analyzer run
-
-mobsf-ios-sast:
-  extends: .sast-analyzer
   image:
     name: "$SAST_ANALYZER_IMAGE"
   variables:
+    SEARCH_MAX_DEPTH: 4
     SAST_ANALYZER_IMAGE_TAG: 3
     SAST_ANALYZER_IMAGE: "$SECURE_ANALYZERS_PREFIX/mobsf:$SAST_ANALYZER_IMAGE_TAG"
+  script:
+    - /analyzer run
 
