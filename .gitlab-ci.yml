@@ -1,10 +1,3 @@
-variables:
-  SECURE_ANALYZERS_PREFIX: "$CI_TEMPLATE_REGISTRY_HOST/security-products"
-  SAST_IMAGE_SUFFIX: ""
-  SAST_EXCLUDED_ANALYZERS: ""
-  SAST_EXCLUDED_PATHS: "spec, test, tests, tmp"
-  SCAN_KUBERNETES_MANIFESTS: "false"
-
 stages:
   - test
 
@@ -16,19 +9,3 @@ check:
     - swift test
     - swift run levenshtein
     - swift build
-
-sast:
-  stage: test
-  artifacts:
-    reports:
-      sast: gl-sast-report.json
-  allow_failure: true
-  image:
-    name: "$SAST_ANALYZER_IMAGE"
-  variables:
-    SEARCH_MAX_DEPTH: 4
-    SAST_ANALYZER_IMAGE_TAG: 3
-    SAST_ANALYZER_IMAGE: "$SECURE_ANALYZERS_PREFIX/mobsf:$SAST_ANALYZER_IMAGE_TAG"
-  script:
-    - /analyzer run
-
