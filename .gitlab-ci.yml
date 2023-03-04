@@ -1,12 +1,15 @@
-image: swift:latest
-
 stages:
-  - check
+  - test
 
 check:
-  stage: check
+  stage: test
+  image: swift:latest
   script:
     - swift --version
     - swift test
     - swift run levenshtein
     - swift build
+
+# test stage
+include:
+  - template: Jobs/SAST.gitlab-ci.yml

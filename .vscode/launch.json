@@ -4,18 +4,18 @@
             "type": "lldb",
             "request": "launch",
             "name": "Debug levenshtein",
-            "program": "${workspaceFolder:levenshtein}/.build/debug/levenshtein",
+            "program": "${workspaceFolder:Levenshtein}/.build/debug/levenshtein",
             "args": [],
-            "cwd": "${workspaceFolder:levenshtein}",
+            "cwd": "${workspaceFolder:Levenshtein}",
             "preLaunchTask": "swift: Build Debug levenshtein"
         },
         {
             "type": "lldb",
             "request": "launch",
             "name": "Release levenshtein",
-            "program": "${workspaceFolder:levenshtein}/.build/release/levenshtein",
+            "program": "${workspaceFolder:Levenshtein}/.build/release/levenshtein",
             "args": [],
-            "cwd": "${workspaceFolder:levenshtein}",
+            "cwd": "${workspaceFolder:Levenshtein}",
             "preLaunchTask": "swift: Build Release levenshtein"
         }
     ]
