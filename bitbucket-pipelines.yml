@@ -1,0 +1,13 @@
+image: swift:latest
+
+pipelines:
+  default:
+    - step:
+        name: Check
+        script:
+          - swift --version
+          - swift test
+          - swift run levenshtein
+          - swift build
+
+

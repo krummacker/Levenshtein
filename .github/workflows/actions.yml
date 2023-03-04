@@ -1,0 +1,12 @@
+name: GitHub Actions
+on: [push]
+jobs:
+  Check:
+    runs-on: swift-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - run: swift --version
+      - run: swift test
+      - run: swift run levenshtein
+      - run: swift build
