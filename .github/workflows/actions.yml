@@ -2,7 +2,7 @@ name: GitHub Actions
 on: [push]
 jobs:
   Check:
-    runs-on: swift-latest
+    runs-on: macos-latest
     steps:
       - name: Check out repository code
         uses: actions/checkout@v3
