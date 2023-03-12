@@ -5,6 +5,7 @@ pipelines:
     - step:
         name: Check
         script:
+          - uname -a
           - swift --version
           - swift test
           - swift run levenshtein
