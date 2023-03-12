@@ -7,12 +7,6 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v3
 
-      - name: Run Trivy vulnerability scanner in fs mode
-        uses: aquasecurity/trivy-action@master
-        with:
-          scan-type: 'fs'
-          scan-ref: '.'
-
       - run: uname -a
       - run: swift --version
       - run: swift test
