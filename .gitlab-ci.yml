@@ -1,10 +1,18 @@
 stages:
   - test
 
+trivy:
+  stage: test
+  image: curlimages/curl:latest
+  script:
+    - curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b .
+    - ./trivy fs .
+
 check:
   stage: test
   image: swift:latest
   script:
+    - uname -a
     - swift --version
     - swift test
     - swift run levenshtein
